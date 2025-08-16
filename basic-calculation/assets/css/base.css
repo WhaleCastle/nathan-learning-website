@@ -179,17 +179,120 @@ header h1 {
     margin: 10px 0;
 }
 
+@media (max-width: 1024px) and (min-width: 769px) {
+    #app {
+        padding: 15px;
+    }
+    
+    header {
+        padding: 15px;
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    header h1 {
+        font-size: 2.2em;
+    }
+    
+    .nav-links {
+        justify-content: center;
+    }
+    
+    .nav-link {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+    
+    .card {
+        padding: 25px;
+    }
+    
+    .quiz-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .btn-primary, .btn-secondary {
+        min-height: 44px;
+        padding: 12px 20px;
+    }
+}
+
 @media (max-width: 768px) {
+    #app {
+        padding: 10px;
+    }
+    
+    header {
+        padding: 15px;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
     header h1 {
         font-size: 1.8em;
     }
     
     .nav-links {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: center;
         gap: 10px;
+        flex-wrap: wrap;
+    }
+    
+    .nav-link {
+        padding: 10px 15px;
+        font-size: 0.9em;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .card {
         padding: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .card h2 {
+        font-size: 1.6em;
+        margin-bottom: 15px;
+    }
+    
+    .quiz-header {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+        padding: 12px;
+    }
+    
+    .question-counter, .quiz-timer {
+        font-size: 1.1em;
+    }
+    
+    .btn-primary, .btn-secondary {
+        min-height: 44px;
+        padding: 12px 20px;
+        font-size: 1em;
+        margin: 8px 5px;
+    }
+    
+    .score-display {
+        padding: 15px;
+        margin: 15px 0;
+    }
+    
+    .score-display p {
+        font-size: 1.3em;
+        margin: 8px 0;
+    }
+    
+    .feedback {
+        padding: 12px;
+        font-size: 1.1em;
+        margin: 15px 0;
     }
 }

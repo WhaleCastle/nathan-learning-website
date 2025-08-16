@@ -527,34 +527,258 @@ header h1 {
     100% { transform: scale(1); }
 }
 
+/* Tablet responsive styles */
+@media (max-width: 1024px) and (min-width: 769px) {
+    header {
+        padding: 15px;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    header h1 {
+        font-size: 2.2em;
+    }
+    
+    .activity-nav {
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .nav-btn {
+        padding: 12px 18px;
+        font-size: 0.95em;
+        min-height: 44px;
+    }
+    
+    .clock-container {
+        gap: 20px;
+    }
+    
+    #analog-clock {
+        width: 280px;
+        height: 280px;
+    }
+    
+    #digital-clock {
+        font-size: 2.2em;
+        padding: 18px 30px;
+    }
+    
+    .compare-container {
+        gap: 15px;
+    }
+    
+    .time-card {
+        padding: 15px;
+    }
+    
+    .quiz-options {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .answer-btn {
+        min-height: 44px;
+        padding: 12px 20px;
+    }
+}
+
+/* Mobile responsive styles */
 @media (max-width: 768px) {
+    header {
+        padding: 15px;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
     header h1 {
         font-size: 1.8em;
     }
     
+    .score-display {
+        margin-top: 10px;
+    }
+    
+    .activity-nav {
+        gap: 8px;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+    
     .nav-btn {
-        padding: 10px 15px;
-        font-size: 0.9em;
+        padding: 10px 12px;
+        font-size: 0.85em;
+        min-height: 44px;
+        flex: 1;
+        min-width: 140px;
+        max-width: 160px;
+    }
+    
+    .activity-panel h2 {
+        font-size: 1.6em;
+        margin-bottom: 15px;
+        text-align: center;
     }
     
     .clock-container {
         flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+    
+    .analog-clock-wrapper {
+        text-align: center;
+    }
+    
+    #analog-clock {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .digital-clock-wrapper {
+        text-align: center;
+        width: 100%;
     }
     
     #digital-clock {
-        font-size: 2em;
-        padding: 15px 25px;
+        font-size: 1.8em;
+        padding: 15px 20px;
+        margin: 0 auto;
+        max-width: 280px;
     }
     
     .compare-container {
         flex-direction: column;
+        gap: 15px;
+        align-items: center;
     }
     
-    .answer-buttons {
+    .time-card {
+        padding: 15px;
+        margin: 5px 0;
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .small-clock {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .vs-symbol {
+        font-size: 1.5em;
+        margin: 10px 0;
+    }
+    
+    .quiz-container {
+        padding: 15px;
+    }
+    
+    .quiz-header {
         flex-direction: column;
+        gap: 8px;
+        text-align: center;
+        padding: 12px;
+    }
+    
+    .quiz-question {
+        margin: 15px 0;
     }
     
     .quiz-options {
         grid-template-columns: 1fr;
+        gap: 10px;
+        margin: 15px 0;
+    }
+    
+    .answer-btn {
+        min-height: 50px;
+        padding: 12px 15px;
+        font-size: 1em;
+        margin: 5px 0;
+    }
+    
+    .answer-buttons {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+    
+    .btn-primary, .btn-secondary {
+        min-height: 44px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        font-size: 1em;
+    }
+    
+    .feedback {
+        padding: 12px;
+        font-size: 1.1em;
+        margin: 15px 0;
+        min-height: 50px;
+    }
+    
+    .problem-text {
+        font-size: 1.6em;
+        margin: 20px 0;
+        padding: 15px;
+    }
+    
+    .quiz-results {
+        padding: 20px;
+    }
+    
+    .score-display {
+        padding: 15px;
+        margin: 15px 0;
+    }
+    
+    .score-display p {
+        font-size: 1.3em;
+        margin: 8px 0;
+    }
+    
+    /* Set clock specific styles */
+    .set-clock-container {
+        text-align: center;
+    }
+    
+    .target-time {
+        margin-bottom: 20px;
+    }
+    
+    .target-display {
+        font-size: 1.8em;
+        padding: 15px;
+        margin: 10px 0;
+    }
+    
+    .interactive-clock {
+        margin: 20px 0;
+    }
+    
+    #set-clock-canvas {
+        width: 250px;
+        height: 250px;
+    }
+    
+    /* Celebration overlay */
+    .celebration-content {
+        padding: 30px;
+        margin: 20px;
+        max-width: 300px;
+    }
+    
+    .celebration-content h2 {
+        font-size: 2em;
+        margin-bottom: 15px;
+    }
+    
+    .celebration-stars {
+        font-size: 3em;
+        margin: 15px 0;
     }
 }

@@ -164,6 +164,75 @@ sort($directories);
             0%, 100% { opacity: 0.3; transform: scale(1); }
             50% { opacity: 1; transform: scale(1.2); }
         }
+        
+        /* Tablet responsive styles */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .container {
+                padding: 30px;
+                max-width: 700px;
+            }
+            
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            .topic-list {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .topic-item {
+                padding: 20px;
+            }
+            
+            .topic-link {
+                font-size: 1.2em;
+                min-height: 50px;
+            }
+            
+            .welcome-message {
+                font-size: 1.2em;
+                padding: 15px;
+            }
+        }
+        
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+                margin-bottom: 20px;
+            }
+            
+            .topic-list {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .topic-item {
+                padding: 20px;
+            }
+            
+            .topic-link {
+                font-size: 1.1em;
+                min-height: 50px;
+            }
+            
+            .topic-icon {
+                font-size: 1.5em;
+                margin-right: 10px;
+            }
+            
+            .welcome-message {
+                font-size: 1.1em;
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+        }
     </style>
 </head>
 <body>
