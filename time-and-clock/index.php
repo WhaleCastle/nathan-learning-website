@@ -67,7 +67,6 @@ $activities = [
                     <div class="analog-clock-wrapper">
                         <canvas id="analog-clock" width="300" height="300"></canvas>
                         <div class="clock-controls">
-                            <button id="toggle-drag" class="btn-primary">Enable Drag Mode</button>
                         </div>
                     </div>
                     <div class="digital-clock-wrapper">

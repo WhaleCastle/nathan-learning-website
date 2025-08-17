@@ -2,7 +2,7 @@ class ClockManager {
     constructor() {
         this.is24Hour = false;
         this.isDragging = false;
-        this.dragMode = false;
+        this.dragMode = true;
         this.currentTime = new Date();
         this.init();
     }
@@ -37,15 +37,6 @@ class ClockManager {
     }
 
     setupEventListeners() {
-        const dragButton = document.getElementById('toggle-drag');
-        if (dragButton) {
-            dragButton.addEventListener('click', () => {
-                this.dragMode = !this.dragMode;
-                dragButton.textContent = this.dragMode ? 'Disable Drag Mode' : 'Enable Drag Mode';
-                dragButton.classList.toggle('active', this.dragMode);
-            });
-        }
-
         if (this.canvas) {
             this.canvas.addEventListener('mousedown', (e) => this.handleMouseDown(e));
             this.canvas.addEventListener('mousemove', (e) => this.handleMouseMove(e));
