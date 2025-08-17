@@ -362,6 +362,44 @@ Create `css/topic-specific.css` only for unique styles that aren't covered by th
 }
 ```
 
+### Step 4: Update Main Menu Configuration
+
+**⚠️ IMPORTANT**: Your new learning topic will not appear on the main menu until you update the topics configuration file.
+
+Add your new topic to `config/topics.php` to make it appear on the main page:
+
+```php
+<?php
+return [
+    'basic-calculation' => [
+        'name' => 'Basic Calculation',
+        'description' => 'Practice addition, subtraction, multiplication, and division',
+        'icon' => '➕',
+        'active' => true
+    ],
+    'time-and-clock' => [
+        'name' => 'Time And Clock',
+        'description' => 'Learn to tell time and work with clocks',
+        'icon' => '🕐',
+        'active' => true
+    ],
+    'your-new-topic' => [    // Must match your directory name exactly
+        'name' => 'Your Topic Display Name',
+        'description' => 'Brief description of what users will learn',
+        'icon' => '🎯',       // Emoji icon for the main menu
+        'active' => true      // Set to false to temporarily hide the topic
+    ]
+];
+```
+
+**Configuration Notes:**
+- The array key (`'your-new-topic'`) must **exactly match** your directory name
+- The `name` field is displayed as the topic title on the main page
+- The `description` appears as subtitle text under the topic name
+- The `icon` should be a single emoji that represents your topic
+- Set `active` to `false` to hide the topic without deleting the directory
+- The main page only displays topics where `active` is `true` and the directory exists
+
 ## Best Practices
 
 1. **Always use shared components first** - Only create custom styles when absolutely necessary
@@ -372,6 +410,7 @@ Create `css/topic-specific.css` only for unique styles that aren't covered by th
 6. **Cache busting** - Always implement timestamp-based cache busting for CSS files
 7. **Progressive enhancement** - Ensure functionality works without JavaScript
 8. **Performance** - Minimize custom CSS and leverage shared styles
+9. **Don't forget topics configuration** - Always update `config/topics.php` when creating new learning topics, or they won't appear on the main menu
 
 ## Component States
 
@@ -404,6 +443,7 @@ When migrating existing mini-websites to use shared CSS:
 - [ ] Verify responsive behavior on all devices
 - [ ] Check for visual regressions
 - [ ] Update any JavaScript that relies on CSS classes
+- [ ] **Ensure topic is properly configured in `config/topics.php`**
 
 ## Support and Updates
 
