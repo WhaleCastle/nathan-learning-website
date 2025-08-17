@@ -30,9 +30,15 @@ $activities = [
     <?php 
     // Cache busting - use file modification time for better cache management
     $jsTimestamp = file_exists('js/main.js') ? filemtime('js/main.js') : time();
-    $cssTimestamp = file_exists('css/style.css') ? filemtime('css/style.css') : time();
+    $baseTimestamp = file_exists('../assets/css/base.css') ? filemtime('../assets/css/base.css') : time();
+    $componentsTimestamp = file_exists('../assets/css/components.css') ? filemtime('../assets/css/components.css') : time();
+    $themesTimestamp = file_exists('../assets/css/themes.css') ? filemtime('../assets/css/themes.css') : time();
+    $topicTimestamp = file_exists('css/topic-specific.css') ? filemtime('css/topic-specific.css') : time();
     ?>
-    <link rel="stylesheet" href="css/style.css?v=<?php echo $cssTimestamp; ?>">
+    <link rel="stylesheet" href="../assets/css/base.css?v=<?php echo $baseTimestamp; ?>">
+    <link rel="stylesheet" href="../assets/css/components.css?v=<?php echo $componentsTimestamp; ?>">
+    <link rel="stylesheet" href="../assets/css/themes.css?v=<?php echo $themesTimestamp; ?>">
+    <link rel="stylesheet" href="css/topic-specific.css?v=<?php echo $topicTimestamp; ?>">
 </head>
 <body>
     <div id="app">

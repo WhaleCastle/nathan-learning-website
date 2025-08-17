@@ -1,0 +1,109 @@
+/* Basic Calculation Topic-Specific Styles */
+
+/* Quiz container specific layout */
+.quiz-container {
+    display: flex;
+    gap: 30px;
+    min-height: 400px;
+}
+
+/* History specific styles */
+.history-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Idle prompt specific */
+.idle-prompt {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: var(--border-radius-xl);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    text-align: center;
+    z-index: 1000;
+    display: none;
+}
+
+.idle-prompt.active {
+    display: block;
+}
+
+.idle-prompt h3 {
+    color: var(--primary-color);
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.idle-prompt p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+/* Responsive Styles - Tablet */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .quiz-container {
+        gap: 20px;
+        min-height: 350px;
+    }
+    
+    .history-table th,
+    .history-table td {
+        padding: 10px 8px;
+        font-size: 0.9em;
+    }
+}
+
+/* Responsive Styles - Mobile */
+@media (max-width: 768px) {
+    .quiz-container {
+        flex-direction: column;
+        gap: 20px;
+        min-height: auto;
+    }
+    
+    .difficulty-options {
+        margin: 10px 0;
+    }
+    
+    .difficulty-options label {
+        font-size: 1em;
+        margin-bottom: 8px;
+    }
+    
+    .difficulty-options input[type="radio"] {
+        margin-right: 8px;
+        transform: scale(1.3);
+    }
+    
+    .start-btn {
+        min-height: 44px;
+        padding: 12px 20px;
+        font-size: 1em;
+        margin-top: 15px;
+    }
+    
+    /* History table responsive */
+    .history-container {
+        overflow-x: auto;
+    }
+    
+    .history-table {
+        min-width: 500px;
+        font-size: 0.8em;
+    }
+    
+    .history-table th,
+    .history-table td {
+        padding: 8px 6px;
+        white-space: nowrap;
+    }
+    
+    .history-table th:first-child,
+    .history-table td:first-child {
+        min-width: 120px;
+    }
+}

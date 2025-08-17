@@ -7,8 +7,17 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>Practice History</title>
-    <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/calc.css">
+    <?php
+    // Cache busting for CSS files
+    $baseTimestamp = file_exists('../assets/css/base.css') ? filemtime('../assets/css/base.css') : time();
+    $componentsTimestamp = file_exists('../assets/css/components.css') ? filemtime('../assets/css/components.css') : time();
+    $themesTimestamp = file_exists('../assets/css/themes.css') ? filemtime('../assets/css/themes.css') : time();
+    $topicTimestamp = file_exists('css/topic-specific.css') ? filemtime('css/topic-specific.css') : time();
+    ?>
+    <link rel="stylesheet" href="../assets/css/base.css?v=<?php echo $baseTimestamp; ?>">
+    <link rel="stylesheet" href="../assets/css/components.css?v=<?php echo $componentsTimestamp; ?>">
+    <link rel="stylesheet" href="../assets/css/themes.css?v=<?php echo $themesTimestamp; ?>">
+    <link rel="stylesheet" href="css/topic-specific.css?v=<?php echo $topicTimestamp; ?>">
 </head>
 <body>
     <div id="app">
