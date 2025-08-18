@@ -215,8 +215,8 @@ class ClockManager {
             // Use same angles as AM numerals (13->1, 14->2, etc.)
             const hourPosition = num - 12;
             const angle = (hourPosition * 30 - 90) * Math.PI / 180;
-            const x = this.centerX + Math.cos(angle) * (this.radius + 8); // Position just outside the clock circle within canvas bounds
-            const y = this.centerY + Math.sin(angle) * (this.radius + 8);
+            const x = this.centerX + Math.cos(angle) * (this.radius + 9); // Position just outside the clock circle within canvas bounds
+            const y = this.centerY + Math.sin(angle) * (this.radius + 9);
             this.ctx.fillText(num.toString(), x, y);
         }
     }
