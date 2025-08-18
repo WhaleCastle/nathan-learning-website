@@ -2,7 +2,6 @@ class ClockManager {
     constructor() {
         this.is24Hour = false;
         this.isDragging = false;
-        this.dragMode = false;
         this.currentTime = new Date();
         this.init();
     }
@@ -37,15 +36,6 @@ class ClockManager {
     }
 
     setupEventListeners() {
-        const dragButton = document.getElementById('toggle-drag');
-        if (dragButton) {
-            dragButton.addEventListener('click', () => {
-                this.dragMode = !this.dragMode;
-                dragButton.textContent = this.dragMode ? 'Disable Drag Mode' : 'Enable Drag Mode';
-                dragButton.classList.toggle('active', this.dragMode);
-            });
-        }
-
         if (this.canvas) {
             this.canvas.addEventListener('mousedown', (e) => this.handleMouseDown(e));
             this.canvas.addEventListener('mousemove', (e) => this.handleMouseMove(e));
@@ -57,7 +47,6 @@ class ClockManager {
     }
 
     handleMouseDown(e) {
-        if (!this.dragMode) return;
         const rect = this.canvas.getBoundingClientRect();
         const x = e.clientX - rect.left - this.centerX;
         const y = e.clientY - rect.top - this.centerY;
@@ -65,7 +54,7 @@ class ClockManager {
     }
 
     handleMouseMove(e) {
-        if (!this.isDragging || !this.dragMode) return;
+        if (!this.isDragging) return;
         const rect = this.canvas.getBoundingClientRect();
         const x = e.clientX - rect.left - this.centerX;
         const y = e.clientY - rect.top - this.centerY;
@@ -78,7 +67,6 @@ class ClockManager {
     }
 
     handleTouchStart(e) {
-        if (!this.dragMode) return;
         e.preventDefault();
         const touch = e.touches[0];
         const rect = this.canvas.getBoundingClientRect();
@@ -88,7 +76,7 @@ class ClockManager {
     }
 
     handleTouchMove(e) {
-        if (!this.isDragging || !this.dragMode) return;
+        if (!this.isDragging) return;
         e.preventDefault();
         const touch = e.touches[0];
         const rect = this.canvas.getBoundingClientRect();
@@ -133,7 +121,7 @@ class ClockManager {
     startClock() {
         this.updateClock();
         setInterval(() => {
-            if (!this.dragMode) {
+            if (!this.isDragging) {
                 this.currentTime = new Date();
             }
             this.updateClock();
