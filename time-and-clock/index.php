@@ -159,7 +159,6 @@ $activities = [
                         </div>
                     </div>
                     <div id="clock-feedback" class="feedback"></div>
-                    <button id="clock-next-question" class="btn-primary" style="display:none;">Next Question</button>
                     <div id="clock-quiz-results" class="quiz-results" style="display:none;">
                         <h3>Quiz Complete!</h3>
                         <div class="score-display">
