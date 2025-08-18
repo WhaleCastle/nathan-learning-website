@@ -2,7 +2,9 @@ class ClockManager {
     constructor() {
         this.is24Hour = false;
         this.isDragging = false;
+        this.isUserSet = false; // Persistent flag to prevent auto-ticking after user interaction
         this.currentTime = new Date();
+        this.intervalId = null; // Store interval reference for stopping
         this.init();
     }
 
@@ -96,9 +98,11 @@ class ClockManager {
         if (distance < this.radius * 0.5) {
             this.dragTarget = 'hour';
             this.isDragging = true;
+            this.isUserSet = true; // Set persistent flag when user starts dragging
         } else if (distance < this.radius * 0.7) {
             this.dragTarget = 'minute';
             this.isDragging = true;
+            this.isUserSet = true; // Set persistent flag when user starts dragging
         }
     }
 
@@ -120,8 +124,9 @@ class ClockManager {
 
     startClock() {
         this.updateClock();
-        setInterval(() => {
-            if (!this.isDragging) {
+        this.intervalId = setInterval(() => {
+            // Only update to current time if user hasn't set the time manually
+            if (!this.isDragging && !this.isUserSet) {
                 this.currentTime = new Date();
             }
             this.updateClock();
@@ -189,6 +194,7 @@ class ClockManager {
     }
 
     drawNumbers() {
+        // Draw AM numerals (1-12) - inner ring
         this.ctx.font = 'bold 20px Arial';
         this.ctx.textAlign = 'center';
         this.ctx.textBaseline = 'middle';
@@ -198,6 +204,19 @@ class ClockManager {
             const angle = (num * 30 - 90) * Math.PI / 180;
             const x = this.centerX + Math.cos(angle) * (this.radius - 30);
             const y = this.centerY + Math.sin(angle) * (this.radius - 30);
+            this.ctx.fillText(num.toString(), x, y);
+        }
+        
+        // Draw PM numerals (13-24) - outer ring
+        this.ctx.font = 'bold 14px Arial'; // Smaller font for PM numerals
+        this.ctx.fillStyle = '#7a8db8'; // Slightly lighter color for distinction
+        
+        for (let num = 13; num <= 24; num++) {
+            // Use same angles as AM numerals (13->1, 14->2, etc.)
+            const hourPosition = num - 12;
+            const angle = (hourPosition * 30 - 90) * Math.PI / 180;
+            const x = this.centerX + Math.cos(angle) * (this.radius - 12); // Larger radius for outer ring
+            const y = this.centerY + Math.sin(angle) * (this.radius - 12);
             this.ctx.fillText(num.toString(), x, y);
         }
     }
