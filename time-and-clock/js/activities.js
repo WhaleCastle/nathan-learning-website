@@ -648,6 +648,7 @@ class ClockQuizManager {
         this.totalTime = 0;
         this.setClockTime = { hours: 12, minutes: 0 };
         this.drawSetClock = null;
+        this.isAnswerChecked = false;
         this.init();
     }
 
@@ -657,20 +658,21 @@ class ClockQuizManager {
     }
 
     setupQuizControls() {
-        const nextBtn = document.getElementById('clock-next-question');
         const restartBtn = document.getElementById('clock-restart-quiz');
         const checkBtn = document.getElementById('check-clock');
-        
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => this.nextQuestion());
-        }
         
         if (restartBtn) {
             restartBtn.addEventListener('click', () => this.startQuiz());
         }
         
         if (checkBtn) {
-            checkBtn.addEventListener('click', () => this.checkAnswer());
+            checkBtn.addEventListener('click', () => {
+                if (this.isAnswerChecked) {
+                    this.nextQuestion();
+                } else {
+                    this.checkAnswer();
+                }
+            });
         }
     }
 
@@ -707,7 +709,7 @@ class ClockQuizManager {
         const question = this.questions[this.currentQuestionIndex];
         const displayEl = document.getElementById('target-time-display');
         const counterEl = document.getElementById('clock-current-question');
-        const nextBtn = document.getElementById('clock-next-question');
+        const checkBtn = document.getElementById('check-clock');
         
         if (counterEl) {
             counterEl.textContent = this.currentQuestionIndex + 1;
@@ -725,8 +727,10 @@ class ClockQuizManager {
         
         this.clearFeedback();
         
-        if (nextBtn) {
-            nextBtn.style.display = 'none';
+        // Reset button to "Check My Answer" state
+        this.isAnswerChecked = false;
+        if (checkBtn) {
+            checkBtn.textContent = 'Check My Answer';
         }
         
         this.questionStartTime = Date.now();
@@ -735,7 +739,7 @@ class ClockQuizManager {
     checkAnswer() {
         const question = this.questions[this.currentQuestionIndex];
         const feedbackEl = document.getElementById('clock-feedback');
-        const nextBtn = document.getElementById('clock-next-question');
+        const checkBtn = document.getElementById('check-clock');
         
         if (!feedbackEl || !question) return;
         
@@ -754,8 +758,10 @@ class ClockQuizManager {
             feedbackEl.className = 'feedback incorrect';
         }
         
-        if (nextBtn) {
-            nextBtn.style.display = 'inline-block';
+        // Change button to "Next Question"
+        this.isAnswerChecked = true;
+        if (checkBtn) {
+            checkBtn.textContent = 'Next Question';
         }
     }
 
@@ -939,7 +945,6 @@ class ClockQuizManager {
         
         const questionEl = document.getElementById('clock-quiz-question');
         const feedbackEl = document.getElementById('clock-feedback');
-        const nextBtn = document.getElementById('clock-next-question');
         const resultsEl = document.getElementById('clock-quiz-results');
         const scoreEl = document.getElementById('clock-quiz-score');
         const timeEl = document.getElementById('clock-total-time');
@@ -947,7 +952,6 @@ class ClockQuizManager {
         
         if (questionEl) questionEl.style.display = 'none';
         if (feedbackEl) feedbackEl.style.display = 'none';
-        if (nextBtn) nextBtn.style.display = 'none';
         
         if (resultsEl) {
             resultsEl.style.display = 'block';
