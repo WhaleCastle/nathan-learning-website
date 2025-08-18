@@ -1,7 +1,7 @@
 <?php
 $mode = isset($_GET['mode']) ? $_GET['mode'] : 'add';
 $level = isset($_GET['level']) ? $_GET['level'] : '1';
-$table = isset($_GET['table']) ? $_GET['table'] : '1';
+$table = isset($_GET['table']) ? $_GET['table'] : '2';
 
 $modeNames = [
     'add' => 'Addition',

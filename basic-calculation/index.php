@@ -79,7 +79,7 @@
                     <div class="difficulty-options">
                         <label>Times Table:</label>
                         <select name="mul-table">
-                            <?php for($i = 1; $i <= 12; $i++): ?>
+                            <?php for($i = 2; $i <= 12; $i++): ?>
                                 <option value="<?php echo $i; ?>"><?php echo $i; ?> Times Table</option>
                             <?php endfor; ?>
                         </select>
@@ -93,7 +93,7 @@
                     <div class="difficulty-options">
                         <label>Division Table:</label>
                         <select name="div-table">
-                            <?php for($i = 1; $i <= 12; $i++): ?>
+                            <?php for($i = 2; $i <= 12; $i++): ?>
                                 <option value="<?php echo $i; ?>">Divide by <?php echo $i; ?></option>
                             <?php endfor; ?>
                         </select>
