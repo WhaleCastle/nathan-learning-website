@@ -34,7 +34,7 @@ class ClockManager {
         this.ctx = this.canvas.getContext('2d');
         this.centerX = this.canvas.width / 2;
         this.centerY = this.canvas.height / 2;
-        this.radius = Math.min(this.centerX, this.centerY) - 10;
+        this.radius = Math.min(this.centerX, this.centerY) - 30;
     }
 
     setupEventListeners() {
