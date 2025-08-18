@@ -283,6 +283,10 @@ header {
     justify-content: center;
 }
 
+.quiz-question h3 {
+    color: white;
+}
+
 .quiz-options {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
