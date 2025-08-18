@@ -235,8 +235,6 @@
 }
 
 #analog-clock {
-    border: var(--border-width-extra-thick) solid var(--primary-color);
-    border-radius: var(--border-radius-circle);
     box-shadow: var(--shadow-md);
     background: white;
 }

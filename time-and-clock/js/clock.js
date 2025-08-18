@@ -34,7 +34,7 @@ class ClockManager {
         this.ctx = this.canvas.getContext('2d');
         this.centerX = this.canvas.width / 2;
         this.centerY = this.canvas.height / 2;
-        this.radius = Math.min(this.centerX, this.centerY) - 10;
+        this.radius = Math.min(this.centerX, this.centerY) - 30;
     }
 
     setupEventListeners() {
@@ -208,15 +208,15 @@ class ClockManager {
         }
         
         // Draw PM numerals (13-24) - outer ring
-        this.ctx.font = 'bold 14px Arial'; // Smaller font for PM numerals
-        this.ctx.fillStyle = '#7a8db8'; // Slightly lighter color for distinction
+        this.ctx.font = 'bold 16px Arial'; // Larger font for better visibility
+        this.ctx.fillStyle = '#e74c3c'; // Red color for better distinction and visibility
         
         for (let num = 13; num <= 24; num++) {
             // Use same angles as AM numerals (13->1, 14->2, etc.)
             const hourPosition = num - 12;
             const angle = (hourPosition * 30 - 90) * Math.PI / 180;
-            const x = this.centerX + Math.cos(angle) * (this.radius - 12); // Larger radius for outer ring
-            const y = this.centerY + Math.sin(angle) * (this.radius - 12);
+            const x = this.centerX + Math.cos(angle) * (this.radius + 9); // Position just outside the clock circle within canvas bounds
+            const y = this.centerY + Math.sin(angle) * (this.radius + 9);
             this.ctx.fillText(num.toString(), x, y);
         }
     }
